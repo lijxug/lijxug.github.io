@@ -7,4 +7,4 @@ categories:
     - memo
 ---
 
-Hello! Testing!
+Hello! Testing travis ci!
