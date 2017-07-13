@@ -11,9 +11,6 @@ cache:
 install:
   - npm install
 
-before_script:
-  - npm install -g gulp
-
 script:
   - hexo cl
   - hexo g
