@@ -6,7 +6,6 @@ install:
   - npm install
 
 script:
-  - hexo cl
   - hexo g
 
 after_script:
