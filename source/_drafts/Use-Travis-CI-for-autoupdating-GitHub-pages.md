@@ -1,8 +1,11 @@
 ---
 title: Use Travis CI for autoupdating GitHub pages
 date: 2017-07-13 15:02:38
-tags: ci NexT
-categories: memo
+tags: 
+    - Travis CI
+    - github
+categories: 
+    - memo
 ---
 
 >The idea that use Travis CI to autoupdate GitHub pages is based on a post of IIssNan who also built NexT, the great theme that I am using. 
