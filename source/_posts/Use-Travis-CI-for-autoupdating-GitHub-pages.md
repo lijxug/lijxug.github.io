@@ -15,6 +15,7 @@ date: 2017-07-13 15:02:38
 
 ## Introduction
 Again, KevinZ recommond this autoupdating method to me. And for better understanding and future use, I decided to write the whole process down in my own way.
+Auto-updating enables you to build your blog without setting up the entire environment in a new computer. All you need to do is pull your repo back, change it, and then push it back. That simplify the posting process if you have to work in multiple locations. 
 <!-- more -->
 ## Travis CI
 [Travis CI](https://travis-ci.org) is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.[wiki](https://en.wikipedia.org/wiki/Travis_CI)
@@ -49,7 +50,7 @@ And `GH_TOKEN` can be generated in your own [github settings](https://github.com
 
 {% asset_img token.png %}
 
-## `.travis.yml`
+## .travis.yml
 
 Then, add a `.travis.yml` file to your repository to tell Travis CI what needs to done for building. I'd like to post my `.travis.yml` for your reference here.
 
@@ -105,3 +106,4 @@ Then, you can go to your travis-ci site to check the status of building. If it l
 {% asset_img success.png %}
 
 PS. if `after script: ... git push ...` failed, it will still report build pass. Be careful about that.
+
