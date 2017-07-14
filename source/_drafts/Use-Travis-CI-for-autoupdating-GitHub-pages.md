@@ -33,6 +33,8 @@ But, I am not farmiliar with Travis CI either, so that's where I am going to sta
 
 Good thing is, Travis CI is [well-documented](https://docs.travis-ci.com/user/getting-started "Getting started"). To get started, you may want to sign in and synchronize your special repositories from GitHub first. 
 
+Next, get a TOKEN, encrypt it with ``
+
 Then, add a `.travis.yml` file to your repository to tell Travis CI what to build.
 
 The principle of this method. 
