@@ -18,8 +18,6 @@ date: 2017-07-13 15:02:38
 Again, KevinZ recommond this autoupdating method to me. And for better understanding and future use, I decided to write the whole process down in my own way.
 Auto-updating enables you to build your blog without setting up the entire environment in a new computer. All you need to do is pull your repo back, change it, and then push it back. That simplify the posting process if you have to work in multiple locations. 
 <!-- more -->
-## Travis CI
-[Travis CI](https://travis-ci.org) is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.[wiki](https://en.wikipedia.org/wiki/Travis_CI)
 
 ## Principle
 I'd like to skip the thinking part and focus on the method itself.
@@ -33,6 +31,9 @@ First of all, the whole process includes several steps:
 
 According to IIssNan, the original author, it's quite easy except Step 3.
 But, I am not farmiliar with Travis CI either, so that's where I am going to start.
+
+## Travis CI
+[Travis CI](https://travis-ci.org) is a hosted, distributed continuous integration service used to build and test software projects hosted at GitHub.[wiki](https://en.wikipedia.org/wiki/Travis_CI)
 
 ## Travis CI settings
 
