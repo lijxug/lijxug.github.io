@@ -3,6 +3,7 @@ title: Use Travis CI for autoupdating GitHub pages
 tags:
   - Travis CI
   - github
+  - git
 categories:
   - memo
 date: 2017-07-13 15:02:38
@@ -35,7 +36,7 @@ But, I am not farmiliar with Travis CI either, so that's where I am going to sta
 
 ## Travis CI settings
 
-Good thing is, Travis CI is [well-documented](https://docs.travis-ci.com/user/getting-started "Getting started"). To get started, you may want to sign in and synchronize your special repositories from GitHub first simply by clicking on the slide-bar of your projects.
+Good thing is, Travis CI is [well-documented](https://docs.travis-ci.com/user/getting-started "Getting started"). To get started, you may want to sign in and synchronize your special repositories from GitHub first. That can be done simply by clicking on the slide-bar of your projects.
 
 {% asset_img synbar.png %}
 
