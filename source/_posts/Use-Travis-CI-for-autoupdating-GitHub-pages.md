@@ -73,8 +73,8 @@ script:
 after_script:
   - cd ./public
   - git init
-  - git config user.name "lijxug"
-  - git config user.email "lijxug@gmail.com"
+  - git config user.name "USERNAME"
+  - git config user.email "USEREMAIL"
   - git add .
   - git commit -m "Update docs"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
@@ -86,3 +86,22 @@ branches:
   only:
     - source 
 ```
+
+## Push source code to the repository
+Now, all you need is `cd` to your blog root and push it to the remote repository. 
+```bash
+# cd ${YOURPATH}/blog
+git init
+git config user.name "USERNAME"
+git config user.email "USEREMAIL"
+git add .
+git commit -m "Update docs"
+git push --force "https://github.com/USERNAME/REPO.git" master:source 
+#if you put your source code in branch source
+```
+
+Then, you can go to your travis-ci site to check the status of building. If it looks like the graph below, then you can celebrate for a while.
+
+{% asset_img success.png %}
+
+PS. if `after script: ... git push ...` failed, it will still report build pass. Be careful about that.
