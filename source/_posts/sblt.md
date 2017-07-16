@@ -50,8 +50,8 @@ categories: memo
 |SideBarEnhancements   |增强侧边栏功能,复制删除重命名等           |MD用户     |
 |To be explored    |        ...        |  ...    |
 
-\* OmniMarkupPreview可以通过快捷键`ctrl + alt + O`实时预览markdown效果，十分好用，但在我电脑上出现了404问题。具体解决办法是在`Preferences -> Package Settings -> OmniMarkupPreview -> Settings - User`下输入
 \* SideBar 可在`View -> Side Bar` 下调出
+\* OmniMarkupPreview可以通过快捷键`ctrl + alt + O`实时预览markdown效果，十分好用，但在我电脑上出现了404问题。具体解决办法是在`Preferences -> Package Settings -> OmniMarkupPreview -> Settings - User`下输入
 
 ```
 {
