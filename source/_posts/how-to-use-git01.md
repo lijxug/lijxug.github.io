@@ -1,10 +1,12 @@
 ---
-title: how-to-use-git
-tags: 
-    - git
+title: How to Use Git-01
+tags:
+  - git
 categories:
-    - memo
+  - memo
+date: 2017-07-17 19:24:44
 ---
+
 
 # Introduction
 **git** is a very useful and powerful tool for version control and team work. It's commonly used in computer field, but it can be useful in the work of other fields too. I've been used it through package developing using Rstudio for a while. Recently, in order to [auto-update this blog](https://lijxug.github.io/2017/07/13/Use-Travis-CI-for-autoupdating-GitHub-pages/), I've learned some useful git skills. That's the moment I want to write all I've learned so far down as a memo as usual and try to keep up.
@@ -153,10 +155,17 @@ git reset [--hard|soft|mixed|merge|keep] [HEAD or <commit>]
 - **--mixed**
     Does not touch the index file or the working tree at all (but resets the head to <commit>, just like all modes do). This leaves all your changed files "Changes to be committed", as git status would put it.
 
+```
+# rollback to last edition
+git reset --soft HEAD^
+git reset --soft HEAD~1
+```
+Actually, if you know the commit id of an "future" edition, you can `reset` to it, too. `git reflog` may help you to find it. 
+
 Please check [the manual of git-reset](https://git-scm.com/docs/git-reset) for more details.
 
-
-
+### Unmodify
+You can use `git checkout -- FILE` to unmodify a FILE.
 
 # Getting Help
 
