@@ -78,7 +78,7 @@ touch README.md
 git add README.md
 ```
 
-{% asset_img git-add.png}
+{% asset_img git-add.png %}
 
 In one word, `git add .` means staged all the changes so far in your repository. But it's risky if you are not used to `git status` check your commits every time.
 
