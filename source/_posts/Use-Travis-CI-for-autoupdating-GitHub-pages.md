@@ -109,3 +109,4 @@ Then, you can go to your travis-ci site to check the status of building. If it l
 
 PS. if `after script: ... git push ...` failed, it will still report build pass. Be careful about that.
 
+>版权声明： 本博客所有文章除特别声明外，均采用[CC BY-NC-SA 3.0 CN](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh)许可协议。转载请注明出处！
