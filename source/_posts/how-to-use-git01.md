@@ -123,7 +123,7 @@ git log --pretty=oneline
 git log --pretty=format:"%h - %an, %ar : %s"
 ```
 More details of `format` are shown here:
-{% asset_img git-log-pretty-format.png}
+{% asset_img git-log-pretty-format.png %}
 
 The history of a git project could be huge and complex, please check [the manual](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History) for further information.
 
