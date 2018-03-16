@@ -11,6 +11,7 @@ install:
   - npm install
 
 script:
+  - chmod 755 ./node_modules/.bin/*
   - hexo cl
   - hexo g
 
