@@ -128,10 +128,12 @@ Hexo支持的博文使用[markdown](http://wowubuntu.com/markdown/ "Markdown语�
 
 ### MathJax
 
+Thanks to [this blog](https://jdhao.github.io/2018/01/25/hexo-mathjax-equation-number/).
+
 Some examples (or test cases):
-we have $x<y$
+we have $$x<y$$
 ```
-we have $x<y$
+we have $$x<y$$
 ```
 
 ... when $x &lt; y$ we have ...
@@ -164,6 +166,14 @@ $$\begin{equation}
 \end{equation}$$
 ```
 
+$\alpha$
+$$\alpha$$
+$$\lim_{x\to 0}$$
+```
+$\alpha$
+$$\alpha$$
+$$\lim_{x\to 0}$$
+```
 
 
 ### Tips
