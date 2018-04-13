@@ -8,7 +8,7 @@ cache:
 
 # S: Build Lifecycle
 install:
-  - npm install
+    # - npm install
 
 script:
   - chmod 755 ./node_modules/.bin/*

@@ -126,58 +126,6 @@ Hexo支持的博文使用[markdown](http://wowubuntu.com/markdown/ "Markdown语�
 {% asset_img avatar.jpg This is an example image %}
 ```
 
-### MathJax
-
-Thanks to [this blog](https://jdhao.github.io/2018/01/25/hexo-mathjax-equation-number/).
-
-Some examples (or test cases):
-we have $x\<y$
-```
-we have $$x\<y$$
-```
-
-... when $x &lt; y$ we have ...
-```
-... when $x &lt; y$ we have ...
-```
-
-... when $x \lt y$ we have ...
-```
-... when $x \lt y$ we have ...
-```
-
-$$x+1\over\sqrt{1-x^2} \tag{i}\label{eq_tag}$$
-
-```
-$$x+1\over\sqrt{1-x^2} \tag{i}\label{eq_tag}$$
-```
-
-$$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
-
-```
-$$\sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t$$
-```
-
-$$\begin{equation}
-    \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t
-\end{equation}$$
-
-```
-$$\begin{equation}
-    \sum_{i=0}^N\int_{a}^{b}g(t,i)\text{d}t
-\end{equation}$$
-```
-
-$\alpha$
-$$\alpha$$
-$$\lim_{x\to 0}$$
-
-```
-$\alpha$
-$$\alpha$$
-$$\lim_{x\to 0}$$
-```
-
 
 ### Tips
 1. `<!-- more -->`：`阅读全文`功能
