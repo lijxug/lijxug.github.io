@@ -9,12 +9,12 @@ cache:
 # S: Build Lifecycle
 install:
     - npm install
-    - npm uninstall hexo-renderer-marked --save
-    - npm install hexo-renderer-pandoc --save
+      #     - npm uninstall hexo-renderer-marked --save
+      #     - npm install hexo-renderer-pandoc --save
 
 script:
-  - mv node_modules/hexo-renderer-pandoc/index.js node_modules/hexo-renderer-pandoc/index.js.old
-  - sed 's/\'markdown\'+extensions/gfm\'+extensions/'' node_modules/hexo-renderer-pandoc/index.js.old > node_modules/hexo-renderer-pandoc/index.js
+    #   - mv node_modules/hexo-renderer-pandoc/index.js node_modules/hexo-renderer-pandoc/index.js.old
+    #   - sed 's/\'markdown\'+extensions/gfm\'+extensions/'' node_modules/hexo-renderer-pandoc/index.js.old > node_modules/hexo-renderer-pandoc/index.js
   - chmod 755 ./node_modules/.bin/*
   - hexo cl
   - hexo g
