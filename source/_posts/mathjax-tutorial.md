@@ -37,6 +37,8 @@ Display stype: use `$$...$$` to define Display style
 
 ## Greak letter
 
+For all letter, check [this post](https://blog.csdn.net/ethmery/article/details/50670297).
+
 `$\alpha$` => $\alpha$
 `$\beta$` => $\beta$
 `$\delta$` => $\delta$
