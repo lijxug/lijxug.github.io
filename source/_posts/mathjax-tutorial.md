@@ -193,6 +193,11 @@ l &= m - n \label{eq5}
 
 You can use `$\eqref{eq3}$` to refer to equation $\eqref{eq3}$, which is the same for $\eqref{eq4}$ and $\eqref{eq5}$.
 
+### font tests
+
+`$e$` => $e$
+`$\it{e}$` => $\it{e}$
+
 ### to be continued: Matrix
 
 # References
