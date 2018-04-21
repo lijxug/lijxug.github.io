@@ -5,6 +5,7 @@ tags:
   - markdown
 categories:
   - memo
+Author: Jason Li
 date: 2017-05-13 00:38:35
 ---
 ### 前言
@@ -126,6 +127,10 @@ Hexo支持的博文使用[markdown](http://wowubuntu.com/markdown/ "Markdown语�
 {% asset_img avatar.jpg This is an example image %}
 ```
 
+### 自定义draft
+
+>Other templates besides "draft" can be used when using the hexo new command. Look under the ./scaffolds/ folder and read the [Hexo documentation on Scaffolds](https://hexo.io/docs/writing.html#Scaffolds) for more information.
+
 
 ### Tips
 1. `<!-- more -->`：`阅读全文`功能
@@ -134,6 +139,7 @@ Hexo支持的博文使用[markdown](http://wowubuntu.com/markdown/ "Markdown语�
 ```
 {% cq %} What doesn't kill you makes you stronger. {% endcq %}
 ```
+
 
 ### 最后
 得感谢一下z尼玛大力安利和技术支持:
