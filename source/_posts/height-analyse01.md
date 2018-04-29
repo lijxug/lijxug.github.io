@@ -3,6 +3,7 @@ title: 'For Fun: Analyse the Height requests distribution'
 tags:
   - scrapy
   - forfun
+  - bbs
 categories:
   - memo
 author: Jason Li
@@ -197,6 +198,8 @@ And the key point, which is **whether the girls prefer guys who are over 170 cm*
 {% asset_img fig3.png fig3 %}
 
 {% asset_img fig4.png fig4 %}
+
+{% asset_img fig5.png fig5 %}
 
 
 Basic analysis were writen in [my post](https://bbs.pku.edu.cn/v2/post-read.php?bid=167&threadid=16400805) on PKUBBS.
