@@ -60,6 +60,9 @@ class bbsSearchSpider(scrapy.Spider):
     start_urls = [
         'https://bbs.pku.edu.cn/v2/search.php?mode=post&bid=167&key=for+gg&days=7'
     ]
+    custom_settings = {
+        'DOWNLOAD_DELAY': 4000,  # target site robots.txt :: Request-rate: 15/1m 0100 - 0659  4s/request
+    }
 
     def parse(self, response):
         
