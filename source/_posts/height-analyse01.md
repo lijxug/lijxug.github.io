@@ -28,7 +28,8 @@ So, let's play.
 # Setup analyse environment
 
 I planned to use python3 tools like `scrapy` to acquire "clean data" from the website,
-and use `pandas` to organize data and `` for words frequencies(?)
+and use `pandas` to organize data and `jieba` for Chinese text segmentation.
+Finally, I'd like to use `R::tidyverse` to plot :P .
 
 Since the packages dependencies could be too much works, I prefer to start over with a brand new environment using Anaconda.
 
