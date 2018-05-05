@@ -7,6 +7,12 @@ categories:
 Author: Jason Li
 ---
 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
 # Abstract
 
 
