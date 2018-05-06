@@ -9,7 +9,6 @@ tags:
 categories:
   - note
 Author: Jason Li
-date: 2018-05-06 13:56:00
 ---
 
 
@@ -43,7 +42,15 @@ pass
 $y_{i,j,a}$ 和 $y_{i,j,b}$ 代表的是isoform $a$和$b$ 在细胞$i$里的log表达量。
 参数$w_k$是混合的$k$ component权重，$K$是总component数。作者把$K$限制到 $\leq 3$。
 
-$\eqref{eq2}, \eqref{eq3}$ 的
+$\eqref{eq2}, \eqref{eq3}$ 的gene $j$ 和 cell $i$编号都省略。
+
+$$\begin{align}
+\Delta_{i,j,a,b} &= y_{i,j,a} - y_{i,j,b} \label{eq1} \\\\
+f(\Delta_{a,b}) &= \sum_{k=1}^K{w_kN(\Delta_{a,b}|\mu_k,\sigma_k)} \label{eq2} \\\\
+\sum_{k=1}^Kw_k &= 1 \label{eq3}
+\end{align}$$
+
+
 
 
 
