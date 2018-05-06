@@ -1,5 +1,7 @@
 ---
-title: "Note: Isoform-level gene expression patterns in single-cell RNA-sequencing data"
+title: >-
+  Note: Isoform-level gene expression patterns in single-cell RNA-sequencing
+  data
 tags:
   - AS
   - single-cell
@@ -7,7 +9,9 @@ tags:
 categories:
   - note
 Author: Jason Li
+date: 2018-05-06 13:56:00
 ---
+
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -36,8 +40,10 @@ pass
 # Method
 
 使用高斯混合模型对于一个细胞$i$表达的一个基因$j$的一对isoforms$\\{a, b\\}$而言，log变换后的表达量$\Delta_{i,j,a,b}$ $\eqref{eq1}$ 进行拟合$\eqref{eq2}, \eqref{eq3}$。
+$y_{i,j,a}$ 和 $y_{i,j,b}$ 代表的是isoform $a$和$b$ 在细胞$i$里的log表达量。
+参数$w_k$是混合的$k$ component权重，$K$是总component数。作者把$K$限制到 $\leq 3$。
 
-
+$\eqref{eq2}, \eqref{eq3}$ 的
 
 
 
