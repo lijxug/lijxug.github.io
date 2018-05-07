@@ -21,7 +21,11 @@ MathJax.Hub.Config({
 
 # Main
 
-
+{%asset_img fig1.png fig1%}
+{%asset_img fig2.png fig2%}
+{%asset_img tbl1.png tbl1%}
+{%asset_img tbl2.png tbl2%}
+{%asset_img tbl3.png tbl3%}
 
 
 
