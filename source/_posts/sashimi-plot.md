@@ -4,7 +4,7 @@ tags:
   - RNA-seq
   - Tools
 categories:
-  - notes
+  - note
 Author: Jason Li
 date: 2018-06-11 22:37:53
 ---
