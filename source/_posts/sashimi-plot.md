@@ -188,4 +188,75 @@ Test complete. No errors found.
 
 就用它了。。
 
+# 在自己的数据上进行测试
+
+- prepare bams
+- prepare gff/gtf
+- prepare setting file
+
+## prepare the alternative isoforms annotations for MISO::sashimi_plot
+
+## prepare setting file
+经过测试，miso相关的文件完全不需要也可以进行sashimi plot
+仅仅需要一些plot相关的参数以及bam的路径以及对应各个样本的颜色信息和总reads信息(for RPKM calculation)
+
+通过测试的minimum setting file looks like this:
+```
+[plotting]
+# Dimensions of figure to be plotted (in inches)
+fig_width = 7
+fig_height = 5
+# Factor to scale down introns and exons by
+intron_scale = 30
+exon_scale = 4
+# Whether to use a log scale or not when plotting
+logged = True
+font_size = 6
+ 
+# Max y-axis
+# ymax = 150
+ 
+# Whether to plot posterior distributions inferred by MISO
+show_posteriors = False
+ 
+# Whether to show posterior distributions as bar summaries
+bar_posteriors = False
+ 
+# Whether to plot the number of reads in each junction
+number_junctions = True
+ 
+resolution = .5
+posterior_bins = 40
+gene_posterior_ratio = 5
+ 
+ 
+[data]
+bam_prefix = ./bams/
+ 
+bam_files = [
+    "heartWT1.sorted.bam",
+    "heartWT2.sorted.bam",
+    "heartKOa.sorted.bam",
+    "heartKOb.sorted.bam"]
+ 
+# List of colors for read denisites of each sample
+colors = [
+    "#CC0011",
+    "#CC0011",
+    "#FF8800",
+    "#FF8800"]
+ 
+# Number of mapped reads in each sample
+# (Used to normalize the read density for RPKM calculation)
+coverages = [
+    6830944,
+    14039751,
+    4449737,
+    6720151]
+```
+
+## prepare GFF3
+use [this script](http://genes.mit.edu/burgelab/miso/scripts/gtf2gff3.pl) to convert GTFs to GFF3, which needs a `.cfg` files
+I found [this template](https://github.com/bioperl/Bio-FeatureIO/blob/master/t/data/gtf2gff3.cfg) online.
+
 >版权声明： 本博客所有文章除特别声明外，均采用[CC BY-NC-SA 3.0 CN](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh)许可协议。转载请注明出处！
