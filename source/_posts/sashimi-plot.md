@@ -29,7 +29,11 @@ This introduction comes from [SplicePlot](http://montgomerylab.stanford.edu/spli
 ## [MISO](http://miso.readthedocs.io/en/fastmiso/sashimi.html)
 
 ### Installation & Dependencies
-[MISO whole package](http://genes.mit.edu/burgelab/miso/software.html)
+[MISO whole package](http://genes.mit.edu/burgelab/miso/software.html),
+which could be installed using `conda`
+```
+conda install -c bioconda misopy 
+```
 
 `sashimi_plot` itself only requires Python package matplotlib(version 1.1.0 or higher) as well as samtools
 
@@ -57,7 +61,7 @@ The [paper]((https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4542614/)) for stand-a
 ![MISO sashimi_plot](http://miso.readthedocs.io/en/fastmiso/_images/sashimi-plot-example-annotated.png)
 Noted that the junction connections were quantified and displayed by junction reads number.
 
-### Shortcomings
+### Comments
 Since the inputs require MISO output, it means that
 I have to run the whole packages all over. Cannot just plot from bam files.
 
@@ -83,7 +87,7 @@ Need `igvtools` or [`samtools`](http://www.htslib.org/) to generate index files 
 ### Output example
 ![IGV sashimi_plot](https://software.broadinstitute.org/software/igv/sites/cancerinformatics.org.igv/files/SL_Sashimi1.png)
 
-### Shortcomings
+### Comments
 不能使用脚本控制
 或者还是得调用MISO那一套
 
@@ -115,6 +119,16 @@ Cannot be found on conda cloud.
 
 Details are shown [here](http://montgomerylab.stanford.edu/spliceplot/index.html#running-spliceplot).
 
+Input files:
+- A .vcf which has been sorted, bgzipped, and indexed using tabix.
+- A .gtf annotation file containing only exons which has been sorted by position, bgzipped, and then indexed using tabix.
+- .bam files containing the aligned RNA-seq data.
+- A mapping file which assigns the individual IDs from the .vcf to file paths for the .bam files as shown below.
+```
+Individual_ID /path/to/bam/file.bam
+Another_ID /path/to/other/bam/file.bam
+```
+
 ### Output example
 ![SplicePlot sashimi_plot](http://montgomerylab.stanford.edu/spliceplot/_images/sashimi_sample.png)
 
@@ -123,7 +137,12 @@ Noted that the exon connections are presented as **splicing ratio**, which is ca
 
 And the package can also print out [hive-plots](http://montgomerylab.stanford.edu/spliceplot/index.html#hive-plots) and [Structure-plots](http://montgomerylab.stanford.edu/spliceplot/index.html#structure-plots)
 
-### Shortcomings
+
+### Comments
+
+The updates stop at 2013. 
+The package was built under python 2.x
+
 
 
 
