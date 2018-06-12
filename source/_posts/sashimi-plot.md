@@ -144,6 +144,48 @@ The updates stop at 2013.
 The package was built under python 2.x
 
 
+# Exploring
 
+## Create a conda environment for sashimi
+
+```
+conda create -n sashimi python=2.7
+conda install -c bioconda misopy
+# find a lovely path
+git clone https://github.com/wueric/SplicePlot.git
+```
+
+## Splice Plot
+### Test
+>To test SplicePlot, run the command `python plot.py test_files/test.p pickle settings_file` in the SplicePlot directory.
+
+Something's wrong...
+```
+#> Reading settings from settings_file...
+#> Parsing settings for hive plot...
+#> Parsing settings for structure plot...
+#> Parsing sashimi plot settings...
+#> Done reading settings.
+#> Traceback (most recent call last):
+#>   File "plot.py", line 111, in <module>
+#>     data_frame = pickle.load(pickle_file)
+#> TypeError: _reconstruct: First argument must be a sub-type of ndarray
+```
+
+## MISO: sashimi_plot
+find MISO path in conda env `~/anaconda3/envs/sashimi/lib/python2.7/site-packages/misopy/`
+
+### Test
+```
+cd sashimi_plot/
+index_gff --index test-data/events.gff test-data/event-data/
+#> vast amounts of outputs
+#> then copy the setting.txt on the website to your path/settings
+sashimi_plot --plot-event "chr17:45816186:45816265:-@chr17:45815912:45815950:-@chr17:45814875:45814965:-" test-data/event-data/ settings/sashimi_plot_settings.txt --output-dir test-plot
+```
+
+Test complete. No errors found.
+
+就用它了。。
 
 >版权声明： 本博客所有文章除特别声明外，均采用[CC BY-NC-SA 3.0 CN](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh)许可协议。转载请注明出处！
