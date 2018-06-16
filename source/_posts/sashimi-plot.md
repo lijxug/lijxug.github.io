@@ -172,6 +172,11 @@ Something's wrong...
 #> TypeError: _reconstruct: First argument must be a sub-type of ndarray
 ```
 
+Cannot find the pickle file.
+
+说起来真是奇怪为什么一定要写SNP...写junction site不就完了。。
+不太懂这个工具的逻辑
+
 ## MISO: sashimi_plot
 find MISO path in conda env `~/anaconda3/envs/sashimi/lib/python2.7/site-packages/misopy/`
 
@@ -186,17 +191,122 @@ sashimi_plot --plot-event "chr17:45816186:45816265:-@chr17:45815912:45815950:-@c
 
 Test complete. No errors found.
 
-就用它了。。
-
 # 在自己的数据上进行测试
 
 - prepare bams
 - prepare gff/gtf
 - prepare setting file
+- create a wrapper (currently in R)
 
-## prepare the alternative isoforms annotations for MISO::sashimi_plot
+## Prepare the alternative isoforms annotations for MISO::sashimi_plot
+gencode.v27.gtf is fine.
 
-## prepare setting file
+
+## Preparing GFF3
+use [this script](http://genes.mit.edu/burgelab/miso/scripts/gtf2gff3.pl) to convert GTFs to GFF3, which needs a `.cfg` files
+I found [this template](https://github.com/bioperl/Bio-FeatureIO/blob/master/t/data/gtf2gff3.cfg) online.
+
+GFF3转换好像需要什么trick...
+网上下的gtf2gff3.pl不太好使
+
+于是寄几改了一个别人的gtf2gff3.py脚本
+```{python}
+#!/usr/bin/python
+"""
+Convert ensemble gtf to gff3 for MISO:sashimi_plot
+Copyright (C)
+__Author__: Jason Li
+"""
+
+import sys
+import re
+
+chr = 'chr'
+keep_features = ["CDS", "UTR", "exon", "gene", "transcript"]
+
+if len(sys.argv) < 2:
+  print("Run:\n\tpython " + sys.argv[0] + " input.gtf output.gff3")
+  exit()
+
+gtf_file = sys.argv[1]
+if len(sys.argv) == 2:
+  gff_file = gtf_file.rstrip('gtf') + 'gff3'
+else:
+  gff_file = sys.argv[2]
+
+### Parse gtf file
+gtf = open(gtf_file, 'r')
+gff = open(gff_file, 'w')
+
+gtf_lines = gtf.readlines()
+line_num = 0
+for line in gtf_lines:
+  line_num += 1
+  if re.match(r'^#', line):
+    continue
+  featureline = line.strip().split('\t')
+  [seq, source, feature, start, end, score, strand, frame, attributes] = featureline
+  if feature not in keep_features:
+    continue
+
+  seq = seq
+  if feature == 'transcript':
+    feature = 'mRNA'
+
+  attributes_array = attributes.replace('"','').strip(';').split('; ')
+  attr_dict = dict(map(lambda x: x.split(), attributes_array))
+  
+  if feature == 'gene':
+    # if I have time, this should be able to be controled by a config file
+    geneID = attr_dict['gene_name']
+    Name = geneID
+    gff.write(
+      '\t'.join([seq, source, feature, start, end, score, strand, frame]) + '\t' + 
+      'ID=' + geneID + ';Name='+Name +'\n')
+  elif feature == 'mRNA':
+    #count = 0
+    Parent = geneID
+    transID = geneID + '.' + attr_dict['transcript_name']
+    gff.write(
+      '\t'.join([seq, source, feature, start, end, score, strand, frame]) + '\t' + 
+      'ID=' + transID + ';Parent='+ Parent +'\n')
+  elif feature == 'exon':
+    #count += 1
+    Parent = transID
+    exonID = transID + '.' + attr_dict['exon_id']
+    gff.write(
+      '\t'.join([seq, source, feature, start, end, score, strand, frame]) + '\t' + 
+      'ID=' + exonID + ';Parent='+ Parent +'\n')
+  else:
+    pass
+
+  if line_num % 10000 == 0:
+    print "{} lines processed.".format(line_num)
+  # gff.write(
+  #   '\t'.join([seq, source, feature, start, end, score, strand, frame]) + '\t' + 
+  #   'Parent=' + ID + '\n')
+
+gff.close()
+gtf.close()
+
+```
+
+使用index_gff对这个gff3进行index
+
+报错，找不到某个pickle文件，懒得查错到底是什么，，明明别的都输出的好好的。
+在`~/anaconda3/envs/sashimi/lib/python2.7/site-packages/misopy/pickle_utils.py`的写文件函数里加了个`try...except`结构
+```{python}
+def write_pickled_file(obj_to_pickle, pickled_filename):
+    try: 
+        pickled_file = file(pickled_filename, 'w')
+        pickle.dump(obj_to_pickle, pickled_file, -1)
+        #del pickled_file
+        pickled_file.close()
+    except Exception,e:
+        print Exception,":",e
+```
+
+## Prepare setting file
 经过测试，miso相关的文件完全不需要也可以进行sashimi plot
 仅仅需要一些plot相关的参数以及bam的路径以及对应各个样本的颜色信息和总reads信息(for RPKM calculation)
 
@@ -255,8 +365,24 @@ coverages = [
     6720151]
 ```
 
-## prepare GFF3
-use [this script](http://genes.mit.edu/burgelab/miso/scripts/gtf2gff3.pl) to convert GTFs to GFF3, which needs a `.cfg` files
-I found [this template](https://github.com/bioperl/Bio-FeatureIO/blob/master/t/data/gtf2gff3.cfg) online.
+## Preparing bams/bais
+```{shell}
+ls $PWD/01.STAR/*/*/*.bam | awk -F "/" '{print $8"\t"$9"\t"$0}' > /path/to/data/sashimi_plot/bams.list
+
+source activate sashimi
+# 好的十分暴力
+cat bams.list | awk '{print "samtools index "$3}' | bash
+# 等不了一秒星人必须要监视一下才能按捺住寄几, 于是在另一个窗口
+b=`ls 01.STAR/*/*/*.bai | wc -l`
+sleep 360
+c=`ls 01.STAR/*/*/*.bai | wc -l`
+until [[ b -eq c ]]; do b=$c; sleep 360; c=`ls 01.STAR/*/*/*.bai | wc -l` ; done; serverChan -t "bai_produce_done"
+```
+妈的真是慢啊。。但我又懒得写多核控制shell..啊不其实是不会。。
+
+=== update ===
+由于登陆节点真的太慢了所以直接投计算节点了，超快！
+==============
+
 
 >版权声明： 本博客所有文章除特别声明外，均采用[CC BY-NC-SA 3.0 CN](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh)许可协议。转载请注明出处！
