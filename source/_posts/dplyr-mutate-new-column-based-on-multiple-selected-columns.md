@@ -18,7 +18,7 @@ MathJax.Hub.Config({
 
 # Abstract
 
-As title shown, a trick for manipulating data frame.
+As the title shows, a trick for manipulating data frame.
 
 <!--more-->
 
