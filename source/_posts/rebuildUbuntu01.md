@@ -59,6 +59,27 @@ EFI分区 0.5G
 
 就有鬼了
 
+## 显卡驱动
+ubuntu 18 的驱动支持比16要友好得多
+
+只需要先把ppa显卡驱动源添加到系统
+```
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt update
+```
+
+然后手动检查，或者使用update center打开additional driver页，就可以了
+手动及安装检查步骤如下
+```
+ubuntu-drivers devices
+
+# 假设推荐的最新版本是430
+sudo apt install nvidia-driver-430
+
+# 重启并检查
+nvdia-smi
+```
+
 ## 机械数据盘不识别问题
 
 ###格式支持
