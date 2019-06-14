@@ -15,14 +15,21 @@ MathJax.Hub.Config({
 # Abstract
 重装篇04 
 - R/Rstudio-server
+- anaconda
 - jupyter lab server style
 <!--more-->
 
 # R
-Tutorial[https://cran.rstudio.com/bin/linux/ubuntu/README.html#installation]
+[Tutorial](https://cran.rstudio.com/bin/linux/ubuntu/README.html#installation)
 
 # Rstudio-server
-Tutorial[https://www.rstudio.com/products/rstudio/download-server/]
+[Tutorial](https://www.rstudio.com/products/rstudio/download-server/)
+
+# anaconda3
+[Download & install](https://www.anaconda.com/distribution/#download-section)
+
+# jupyter lab
+[Tutorial](https://blog.csdn.net/weixin_41571493/article/details/88830458)
 
 
 
