@@ -1,0 +1,1253 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AS,single-cell,RNA-abundance," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="MathJax.Hub.Config({   TeX: { equationNumbers: { autoNumber: &quot;AMS&quot; } } });   前言/AbstractRNA velocity in single cells 作者是瑞典医学院的 Sten Linnarsson 和哈佛药学院的 Peter Kharchenko 。 这篇文章主要是提出了一个 RNA velocity 的概念">
+<meta name="keywords" content="AS,single-cell,RNA-abundance">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文章笔记：RNA velocity in single cells">
+<meta property="og:url" content="http://yoursite.com/2018/04/20/article-note-10-1101-206052/index.html">
+<meta property="og:site_name" content="Jason&#39;s Cabin">
+<meta property="og:description" content="MathJax.Hub.Config({   TeX: { equationNumbers: { autoNumber: &quot;AMS&quot; } } });   前言/AbstractRNA velocity in single cells 作者是瑞典医学院的 Sten Linnarsson 和哈佛药学院的 Peter Kharchenko 。 这篇文章主要是提出了一个 RNA velocity 的概念">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/04/20/article-note-10-1101-206052/fig1.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/20/article-note-10-1101-206052/fig2.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/20/article-note-10-1101-206052/fig3.png">
+<meta property="og:image" content="http://yoursite.com/2018/04/20/article-note-10-1101-206052/fig1.png">
+<meta property="og:updated_time" content="2019-06-14T05:54:32.995Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文章笔记：RNA velocity in single cells">
+<meta name="twitter:description" content="MathJax.Hub.Config({   TeX: { equationNumbers: { autoNumber: &quot;AMS&quot; } } });   前言/AbstractRNA velocity in single cells 作者是瑞典医学院的 Sten Linnarsson 和哈佛药学院的 Peter Kharchenko 。 这篇文章主要是提出了一个 RNA velocity 的概念">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/20/article-note-10-1101-206052/fig1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/20/article-note-10-1101-206052/"/>
+
+
+
+
+
+  <title>文章笔记：RNA velocity in single cells | Jason's Cabin</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99090953-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jason's Cabin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">warm and cozy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/20/article-note-10-1101-206052/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason's Cabin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文章笔记：RNA velocity in single cells</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-20T22:46:34+00:00">
+                2018-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+
+<h3 id="前言-Abstract"><a href="#前言-Abstract" class="headerlink" title="前言/Abstract"></a>前言/Abstract</h3><p><a href="https://www.biorxiv.org/content/early/2017/10/19/206052" target="_blank" rel="noopener">RNA velocity in single cells</a></p>
+<p>作者是瑞典医学院的 Sten Linnarsson 和哈佛药学院的 Peter Kharchenko 。</p>
+<p>这篇文章主要是提出了一个 RNA velocity 的概念。通过标准单细胞测序数据测量得到mRNA剪切前后的比例来估计RNA丰度随时间的变化。作者认为这种变化代表了细胞状态的改变，是一种动态的对单细胞状态的观测。而寻常的RNA丰度分析手段并不能展现出一个动态的细胞状态变化的过程。</p>
+<p>进一步，这个指标可以用于预测每个细胞当前状态的下一个状态（以小时为基本时间尺度）。<br>作者在神经嵴细胞系 (Neural crest lineage) 中验证了这一指标的准确性，在文章中展示了具体应用方式，重建了小鼠海马体 (mouse hippocampus) 的分化树 (branching lineage tree), 测试了人类胚胎脑部的RNA变化。<br>作者希望这个指标可以用于协助分析和揭示人类细胞的谱系发育和细胞内的动态变化。</p>
+<a id="more"></a>
+<h3 id="主要亮点"><a href="#主要亮点" class="headerlink" title="主要亮点"></a>主要亮点</h3><ul>
+<li>对原本是静态的测序数据进行了重新诠释让它能展现出一种动态的信息</li>
+</ul>
+<h3 id="大概原理"><a href="#大概原理" class="headerlink" title="大概原理"></a>大概原理</h3><h4 id="太长不看版"><a href="#太长不看版" class="headerlink" title="太长不看版"></a>太长不看版</h4><p>工具输入raw reads和聚类地图坐标，输出是带方向的地图</p>
+<p>步骤</p>
+<ol>
+<li>针对每个细胞及每个基因数出 spliced reads &amp; unspliced reads</li>
+<li>使用model I 每个基因所有的细胞的spliced reads$\upsilon$和 unspliced reads$s$ 估计出降解率 $\gamma$ for $\upsilon=\gamma s$</li>
+<li>之后对每个细胞的各个基因的unspliced reads使用$\gamma$计算 “下一个时刻（概念化的短时间步长）” 成熟程度，认为这是这个细胞下一步的状态</li>
+<li>每个细胞的下一步状态和其他所有细胞当前状态作correlation，作为向量模长，向量方向即细胞指向其他细胞的方向</li>
+<li>将每个细胞算得的所有向量线性相加，即可得到最终这个细胞在聚类地图上下一步的走向</li>
+</ol>
+<p>Some notes<br>这个方法的指向必须是已经测得的细胞，所以并不能揭示潜在路径<br>这个方法主要就是在tracing的时候提示已知细胞群里最有可能的发育方向<br>因为使用了 unspliced reads 因此还是从数据中又多回收了一部分信息量的。</p>
+<h4 id="详细一点的原理"><a href="#详细一点的原理" class="headerlink" title="详细一点的原理"></a>详细一点的原理</h4><p>主要是对“骑墙”reads进行分类和统计。<br>跳过整个intron，横跨exon/exon边界的reads，作者认为来自于经过剪切的成熟RNA。<br>跨过了exon/intron边界的reads是来自于没有经过剪切的mRNA。<br>完全在exon中的reads既可以来自成熟mRNA也可以来自于未剪切的mRNA，<br>而完全在intron中的reads作者认为可能来自于非特异背景（噪音吧就）或者是潜在的其他transcripts</p>
+<img src="/2018/04/20/article-note-10-1101-206052/fig1.png" title="fig1">
+<p>中间作者介绍了一下关于几个常见测序protocol捕获mRNA前体能力的论证。<br>(对于mRNA和mRNA前体的捕获能力可能存在bias，不同方法的捕获能力也有差距, Fig1A)</p>
+<p>具体用来测算所谓“剪切速度”的模型十分简单，本质上是一个动力学平衡公式，如同Fig1B所示，</p>
+<p>转录速率 $\alpha$， 得到mRNA前体量 $\upsilon$， Splicing rate $\beta$， Spliced mRNA $s$， Degradation rate $\gamma$</p>
+<p>当处于稳态时，显然有<br>$$\begin{equation}<br>\upsilon=\gamma s<br>\end{equation}$$</p>
+<p>转录速率 $\alpha$ 的升高或降低都会引起u的变化从而形成新的稳态平衡，因此作者希望通过跟踪$u$和$s$来预测未来mRNA变化量。</p>
+<p>通过测量不同mRNA的这种剪切-成熟平衡，可以对每个细胞估计出一个高维向量，由于这些向量揭示的实质上是一个动态变化过程，因此作者希望用这种方法可以预测细胞未来的状态。</p>
+<p>从Fig1 EFG可以看到，通过对sliced/unsliced的reads进行定量，细胞周期相关的基因呈现出一种周期性的变化。<br>作者发现和周期相关的基因都能根据斜率$\gamma$和unsliced reads $s$进行定量预先观察到上下调的行为。</p>
+<p>1H是作者把上述公式解了出来，然后推测细胞周期下一个state的位置，plot到pc图上，主要是想看看能不能用这个方法推测细胞state。<br>但具体怎么解的公式、计算的slope还需要进一步深挖细节</p>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><p>小鼠嗜铬细胞的单细胞mRNA-Seq(SMART-Seq2)数据。在发育过程中，大量的嗜铬细胞(肾上腺髓质的神经分泌性细胞)，从神经脊的Schwann 细胞前体分化而来。<br>这条路径可以很方便通过追踪细胞系的分化路径来对他们的方法进行测试。</p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><img src="/2018/04/20/article-note-10-1101-206052/fig2.png" title="fig2">
+<p>Fig2展示了这个数据集用作者方法得到的预测结果。值得注意的是，每个细胞的数据在聚类后用最相似的k=5个细胞pool了一下。</p>
+<img src="/2018/04/20/article-note-10-1101-206052/fig3.png" title="fig3">
+<hr>
+<p>未完待续</p>
+<hr>
+<h3 id="详细方法"><a href="#详细方法" class="headerlink" title="详细方法"></a>详细方法</h3><h4 id="RNA-velocity-的理论描述"><a href="#RNA-velocity-的理论描述" class="headerlink" title="RNA velocity 的理论描述"></a>RNA velocity 的理论描述</h4><p>基于Fig1的图形</p>
+<img src="/2018/04/20/article-note-10-1101-206052/fig1.png" title="fig1">
+<p>对于任意时间点的：<br>unspliced mRNA molecules $u$<br>spliced mRNA molecules $s$</p>
+<p>$$\begin{align}<br>\frac{du}{dt} &amp;= \alpha(t) - \beta(t)u(t)  \\<br>\frac{ds}{dt} &amp;= \beta(t)u(t) - \gamma(t)s(t)<br>\end{align}$$</p>
+<blockquote>
+<p>Here, $\alpha(t)$ is the time-dependent rate of transcription, $\beta(t)$ is the rate of splicing, $\gamma(t)$ is the rate of degradation. Under an assumption of constant (time-independent) rates $\alpha(t)$ = $\alpha$,<br>$\gamma(t)$ = $\gamma$, and setting $\beta(t)$ = 1 (i.e. measuring all rates in units of the splicing rate)</p>
+</blockquote>
+<p>The rate equation simplify to: </p>
+<p>$$\begin{align}<br>\frac{du}{dt} &amp;= \alpha - u(t) \\<br>\frac{ds}{dt} &amp;= u(t) - \gamma s(t)<br>\end{align}$$</p>
+<p>The complete solution to these equation is:</p>
+<p>$$\begin{align}<br>u(t) &amp;= \alpha(1-\it{e}^{-t}) + u_0\it{e}^{-t} \\<br>s(t) &amp;= \frac{\it{e}^{-t(1_\gamma)} \left[\it{e}^{t(1+\gamma)}\alpha(\gamma -1) + \it{e}^{t\gamma}(u_0 - \alpha)\gamma + \it{e}{t}\left(\alpha - \gamma(s_0 + u_0 + s_0\gamma)\right) \right]}{\gamma(\gamma - 1)}<br>\end{align}$$</p>
+<p>若群体处于平衡态(steady-state)，那么有$\frac{ds}{dt} = 0$ 则有</p>
+<p>$$\begin{equation}<br>\gamma = \frac{u}{s}<br>\end{equation}$$</p>
+<p>但如果群体不处于终末分化的状态（也就是平衡态），那么这个是不成立的，对于那些快速变化的分化中细胞，$\gamma$ 需要通过下述方法来估计。</p>
+<p>最大的问题是，我们并不知道$\alpha$也就是每个转录本的转录效率，也很难估计。这就很难得到我们想要的未来的$s(t)$。所以我们通过下述两个模型，不是估计$\alpha$而是直接估计$s(t)$</p>
+<p><span style="border-bottom:2px black;">Model I. Constant velocity assumption:</span></p>
+<p>这个模型假设剪切效率不变即$\frac{ds}{dt}=v$。此时推断变得容易因为$s(t) = s_0 + vt$。<br>在实际使用中，短时间内效果还行，但是对于更长时间段的变化的推断，如果$v&lt;0$（i.e. 下调基因）, 那么$s(t)$可能为负。<br>所以需要把负值都变为0</p>
+<p><span style="border-bottom:2px black;">Model II. Constant unspliced molecules assumption:</span></p>
+<p>另外，我们还可以假设未剪切的分子数保持不变，比如$u(t) = u_0$, 公式可以化简为<br>$$\begin{equation}<br>\frac{ds}{dt}=u_0 - \gamma s(t)<br>\end{equation}$$</p>
+<p>方程解变形为 </p>
+<p>$$\begin{equation}<br>s(t)=s_0\it{e}^{-\gamma t} + \frac{u_0}{\gamma}(1-\it{e}^{\gamma t})<br>\end{equation}$$</p>
+<p>假设基因独立的情况下，一个单细胞的总体RNAvelocity就是一个由各个基因组成的多维向量。</p>
+<h4 id="估计-RNA-velocity"><a href="#估计-RNA-velocity" class="headerlink" title="估计 RNA velocity"></a>估计 RNA velocity</h4><p>对于每个基因，均一化矫正的降解率$\gamma$都用最小二乘法拟合这个线性模型$u ~{} \gamma * s + o$得到。其中$u = \frac{U}{N}$和$s = \frac{S}{N}$, N代表总reads counts， U代表unspliced reads counts, S代表splicaed reads counts。<br>$o$是一个常数项，代表的是可能受到未注释的转录本影响的内含子counts基线。也有多种方法进行估计。</p>
+<p>在Model I下，velocity $v = u - \gamma s - o$，一个给定细胞下的给定基因预测下个时间点的counts被定义为$s_t = max(0, s_0 + vt)$。t是一个时间单位，在这个尺度下总RNAcount不应该有太大变化。</p>
+<p>Model II下则 $\Delta s(t) = \left(\frac{\hat{x}}{\gamma} - s\right)(1-e^{-\gamma t})$，其中$\hat{u} = \frac{\max(0, U-o*N)}{N}$，是一个矫正过的unspliced counts。<br>并且默认$t=1$，预测的counts $S_t = \max(0, S + \Delta s(t) N)$，S是一个未经过矫正的spliced counts。均一化矫正的推测的counts $s_t = \frac{S_t}{\hat{N}}$ ， $\hat{N}$是一个推测的细胞总counts数 $\hat{N} = N+S_t - S$</p>
+<h4 id="Cell-nearest-neighbor-kNN-pooling"><a href="#Cell-nearest-neighbor-kNN-pooling" class="headerlink" title="Cell nearest neighbor(kNN) pooling"></a>Cell nearest neighbor(kNN) pooling</h4><p>为了增加$\gamma$的估计准确度，所以作者把几个临近相似的细胞pool到一起进行估计。针对smart-seq2的测序数据，作者用Person correlation找到 k个最近的细胞，而10X 和inDrop数据使用PCA的欧氏距离找的。找到以后把它们的$S,U$ counts加起来作为新的数据点。</p>
+<h4 id="velocity-可视化"><a href="#velocity-可视化" class="headerlink" title="velocity 可视化"></a>velocity 可视化</h4><hr>
+<p>未完待续</p>
+<hr>
+<blockquote>
+<p>版权声明： 本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 3.0 CN</a>许可协议。转载请注明出处！</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AS/" rel="tag"># AS</a>
+          
+            <a href="/tags/single-cell/" rel="tag"># single-cell</a>
+          
+            <a href="/tags/RNA-abundance/" rel="tag"># RNA-abundance</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/13/mathjax-tutorial/" rel="next" title="How to write equation in my blog">
+                <i class="fa fa-chevron-left"></i> How to write equation in my blog
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/27/compare-STAR-kallisto/" rel="prev" title="Comparation of STAR-based/kallisto pipeline">
+                Comparation of STAR-based/kallisto pipeline <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODY0NC81MjE1"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+           
+              <p class="site-description motion-element" itemprop="description">Notes about R & python</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lijxug" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言-Abstract"><span class="nav-number">1.</span> <span class="nav-text">前言/Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要亮点"><span class="nav-number">2.</span> <span class="nav-text">主要亮点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大概原理"><span class="nav-number">3.</span> <span class="nav-text">大概原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#太长不看版"><span class="nav-number">3.1.</span> <span class="nav-text">太长不看版</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#详细一点的原理"><span class="nav-number">3.2.</span> <span class="nav-text">详细一点的原理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据"><span class="nav-number">4.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">5.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详细方法"><span class="nav-number">6.</span> <span class="nav-text">详细方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#RNA-velocity-的理论描述"><span class="nav-number">6.1.</span> <span class="nav-text">RNA velocity 的理论描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#估计-RNA-velocity"><span class="nav-number">6.2.</span> <span class="nav-text">估计 RNA velocity</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cell-nearest-neighbor-kNN-pooling"><span class="nav-number">6.3.</span> <span class="nav-text">Cell nearest neighbor(kNN) pooling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#velocity-可视化"><span class="nav-number">6.4.</span> <span class="nav-text">velocity 可视化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

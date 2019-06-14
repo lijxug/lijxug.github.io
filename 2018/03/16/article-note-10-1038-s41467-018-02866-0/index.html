@@ -1,0 +1,1249 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="AS,single-cell,total RNA sequencing," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言精读一下文章, 记录一些东西，其实好像就是翻译一下。 今天的主角是这篇Single-cell full-length total RNA sequencing uncovers dynamics of recursive splicing and enhancer RNAs，发表在Nature Communication杂志上，是日本理化研究所（RIEKN）的成果。这篇文章主要介绍了他们建立的">
+<meta name="keywords" content="AS,single-cell,total RNA sequencing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文章笔记： Single-cell full-length total RNA sequencing uncovers dynamics of recursive splicing and enhancer RNAs">
+<meta property="og:url" content="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/index.html">
+<meta property="og:site_name" content="Jason&#39;s Cabin">
+<meta property="og:description" content="前言精读一下文章, 记录一些东西，其实好像就是翻译一下。 今天的主角是这篇Single-cell full-length total RNA sequencing uncovers dynamics of recursive splicing and enhancer RNAs，发表在Nature Communication杂志上，是日本理化研究所（RIEKN）的成果。这篇文章主要介绍了他们建立的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig1-1.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig1-2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig2.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig3.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig4.png">
+<meta property="og:image" content="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig5.png">
+<meta property="og:updated_time" content="2019-06-14T05:54:32.983Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文章笔记： Single-cell full-length total RNA sequencing uncovers dynamics of recursive splicing and enhancer RNAs">
+<meta name="twitter:description" content="前言精读一下文章, 记录一些东西，其实好像就是翻译一下。 今天的主角是这篇Single-cell full-length total RNA sequencing uncovers dynamics of recursive splicing and enhancer RNAs，发表在Nature Communication杂志上，是日本理化研究所（RIEKN）的成果。这篇文章主要介绍了他们建立的">
+<meta name="twitter:image" content="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig1-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/"/>
+
+
+
+
+
+  <title>文章笔记： Single-cell full-length total RNA sequencing uncovers dynamics of recursive splicing and enhancer RNAs | Jason's Cabin</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-99090953-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jason's Cabin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">warm and cozy</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/16/article-note-10-1038-s41467-018-02866-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Li">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jason's Cabin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文章笔记： Single-cell full-length total RNA sequencing uncovers dynamics of recursive splicing and enhancer RNAs</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-16T15:20:42+00:00">
+                2018-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index">
+                    <span itemprop="name">note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>精读一下文章, 记录一些东西，其实好像就是翻译一下。</p>
+<p>今天的主角是这篇<a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=Single-cell+full-length+total+RNA+sequencing+uncovers+dynamics+of+recursive+splicing+and+enhancer+RNAs" target="_blank" rel="noopener">Single-cell full-length total RNA sequencing uncovers dynamics of recursive splicing and enhancer RNAs</a>，发表在<em>Nature Communication</em>杂志上，是日本理化研究所（RIEKN）的成果。<br>这篇文章主要介绍了他们建立的RamDA-seq测序方法，号称是第一个针对单细胞的全长总RNA组测序方法。</p>
+<a id="more"></a>
+<h3 id="主要亮点"><a href="#主要亮点" class="headerlink" title="主要亮点"></a>主要亮点</h3><ul>
+<li>RamDA-seq 对于non-poly(A) RNA的sensitivity较高，并且得到的reads能够更完整地覆盖transcript(near-complete full-length transcript coverage)</li>
+<li>RamDA-seq 能够找到 &gt;300kb的内含子的<a href="#RS">recursive splicing</a>事件和增强子RNA,以及它们在单细胞中特异性的作用模式。</li>
+</ul>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>生物体中存在的总RNA丰度极高并且参与各种生命过程的调控。自然能够越详细地得到这些数据越能帮助人类理解生命过程，尤其是单细胞水平上。<br>目前当然也有很多单细胞针对RNA的测序方法，但是绝大多数都是通过捕获polyA测得转录谱，对于调控性质的enhancerRNA (eRNA) 和long non-codingRNA (lncRNA) 就捕获得很少。这怎么能行呢<em>(:зゝ∠)</em>这还怎么研究调控了。</p>
+<p>目前市面上已有报道的SUPer-Seq倒是说它们用连接了随机引物的oligo-dT钓到了一些non-polyA RNA, 比如circRNA什么的，那个sensitivity都太低，没眼看。当然，怎么去除rRNA也是一个大问题，毕竟这些占据了总RNA的大部分，但它们携带的信息又没太多价值。</p>
+<p>作者说为了解决这个问题并且还能获得比较高的sensitivity，他们使用了一个新方法叫reverse transcription with random displacement amplification (RT-RamDA, 随机替代逆转录扩增)，并且用的引物是not-so-random primers (NSRs, 不辣么随机引物)。据说这个不辣么随机引物可以在随机启示扩增的同时减少来自rRNA的cDNA，引用两篇文献<a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=Digital+transcriptome+profiling+using+selective+hexamer+priming+for+cDNA+synthesis." target="_blank" rel="noopener">1</a>、<a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=Digital+transcriptome+profiling+from+attomole-level+RNA+samples." target="_blank" rel="noopener">2</a>，嗯懒得看，猜测是用计算方法筛选了一下随机引物，把更有可能匹配上rRNA的那些短引物(6bp)都去掉了。</p>
+<blockquote>
+<p>后来看了一下，对就是用计算方法把map上rRNA的短引物都去除了</p>
+</blockquote>
+<h3 id="结果部分"><a href="#结果部分" class="headerlink" title="结果部分"></a>结果部分</h3><h4 id="那么问题来了，什么是RT-RamDA"><a href="#那么问题来了，什么是RT-RamDA" class="headerlink" title="那么问题来了，什么是RT-RamDA"></a>那么问题来了，什么是RT-RamDA</h4><p>先上图</p>
+<img src="/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig1-1.png" title="fig1-1">
+<p>原理从图上看还是比较清晰的，由于NSR引物的存在，poly-A / non-polyA RNA都能被钓到，而rRNA由于既缺乏polyA尾，NSR也捕获不到。因此这个方法能够较为准确地富集transcripts 和一些较长的RNA片段。之后就是常见的后随链合成、纯化和建库步骤，此处不表。</p>
+<p>既然是新方法，避免不了先和已有方法比较一下，做一些benchmark。</p>
+<h4 id="Benchmark"><a href="#Benchmark" class="headerlink" title="Benchmark"></a>Benchmark</h4><p>作者用上述流程建了一个库，大概包含有10pg的mESC总RNA，然后比较他们的RamDA-seq和C1-RamDA-seq与已有方法的一些指标的区别。<br>已有方法作者选择了上文里提到的SUPeR-seq，以及基于oligo-dT的方法如SMART-seq v4, Quartz-seq。并且作者用了1μl总RNA做了去除rRNA的总RNA bulk 测序（rdRNA-seq)和富集polyA的RNA bulk测序(paRNA-seq)作为分析的上限（可以理解成阳性对照吧）。</p>
+<p>选取的比较指标主要有：</p>
+<ol>
+<li>找到的transcript数量，transcript加了限定条件必须是和rdRNA-seq找到的相比表达量变化在两倍范围内的</li>
+<li>变异系数平方（CV^2)和表达量的关系，用来检测可重复性（reproductivity)?</li>
+<li>和rdRNA-seq的表达量correlation</li>
+<li>其他。。spike-in什么的</li>
+</ol>
+<p>结论是相比其他单细胞方法来说和bulk总rna测序结果最为接近，鲁棒性和sensitivity都优于现有方法。</p>
+<img src="/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig1-2.png" title="fig1-2">
+<p>当然，既然号称是能提到更多transcripts和non-polyA RNA的方法，reads coverage的对比也不可少<br>fig2里5‘-3‘的reads coverage可以很明显地看到基于oligo-dT的几个方法都有3’bias，而新方法更接近bulk测序结果。<br>对较长transcripts外显子区域覆盖率相对SUPeR和SMART-Seq都更高。</p>
+<img src="/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig2.png" title="fig2">
+<h4 id="生物学问题-细胞分化中的应用"><a href="#生物学问题-细胞分化中的应用" class="headerlink" title="生物学问题 - 细胞分化中的应用"></a>生物学问题 - 细胞分化中的应用</h4><p>Benchmark做完，说明这个好用，仅仅到此为止只是一个普通的方法学文章。当然还要和生物学意义结合起来。<br>作者用多时间点取样的mESC做了一批单细胞数据。这种数据的好处应该是可以跟踪这批细胞在不同时间点的分化状态。分化刚好是一个transcripts调控变动比较剧烈的过程，用这个新方法可以说是比较合适。</p>
+<p>首先是一个diffusion map。可以看到各个时间点的聚类结果可以说是很漂亮了，但是没仔细看方法，不太确定其中的人为因素。他们这套数据一个亮点就是还存在比较丰富的non-polyA RNA 表达，并且确实在各个阶段都检查到了，在观察调控上可以说很有优势。</p>
+<p>并且他们还做了scRT-QPCR来验证其中一部分的non-polyA RNA表达量，其中还包括了两条未注释过的RNA。作者放话说下一步就是要利用这批数据做一个生物功能富集出来。</p>
+<p>不过鉴于这篇文章还是偏方法学，所以作者在这里找了两条应该是已有研究比较充分的一条长的transcripts- <em>Neat1-001</em> 它有一条较短的isoform <em>Neat1-002</em> 。从结果上看似乎比较符合作者的预期，但是我不太了解这个基因，所以作者说啥就是啥吧<em>(:зゝ∠)</em></p>
+<img src="/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig3.png" title="fig3">
+<h4 id="生物学问题-递归剪切-Recursive-splicing"><a href="#生物学问题-递归剪切-Recursive-splicing" class="headerlink" title="生物学问题 - 递归剪切 Recursive splicing"></a>生物学问题 - 递归剪切 <em>Recursive splicing</em></h4><p>介绍完细胞水平上的应用，接下来就是新方法得到的数据在更细微尺度上的应用。</p>
+<p>作者选择了RS，也即是脚注里介绍的recursive splicing的检测。</p>
+<img src="/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig4.png" title="fig4">
+<p>他们假设如果这个现象能被他们的方法观测到，那么reads coverage应该是呈现锯齿状。<br>作者通过线性回归模型拟合锯齿(有点骚）应该是找到了一些基因，然后高亮了这三个，<em>Cadm1</em>、<em>Robo2</em>和 <em>Magi1</em> ,说这三个都是有文献报道和最初在mESCs里做出来的有RS现象的基因。图上只展示了 <em>Cadm1</em> 和 <em>Robo2</em> 这两个基因。<br>可以看到两个基因的bulk结果都有锯齿pattern，但在时间点上bulk数据不太明显。但是从单细胞数据上看却能明显地看到它们在不同的时间段的锯齿情况。</p>
+<h4 id="生物学问题-增强子RNA-Enhancer-RNAs"><a href="#生物学问题-增强子RNA-Enhancer-RNAs" class="headerlink" title="生物学问题 - 增强子RNA Enhancer RNAs"></a>生物学问题 - 增强子RNA <em>Enhancer RNAs</em></h4><p>non-polyA RNA里的一部分premature RNA已经在上一个段落里观测过了，现在来看看另一个部分，enhancer RNA。</p>
+<img src="/2018/03/16/article-note-10-1038-s41467-018-02866-0/fig5.png" title="fig5">
+<p>ES-active enhancer 逐步降低，ES-inactive 一直保持低水平表达。在这个数据集里和预期一致。并且，fig5b里也能看到background也即是随机的基因组区域一直都是低水平。<br>结合前人在eRNA激活位点富集的条件特异激活的转录因子的DNA结合motif的研究，作者也尝试搜索了一下ESC中激活的eRNA和motif, 并且和rdRNA-seq结果进行比较。召回率还是比较可观的，75%左右吧。发现相当一部分在self-renewal和多能性(pluripotency)相关的TF上。<br>后面还是照例做了时间序列研究，热图和右边的曲线图能看到还是找到了一些东西。作者说了几个例子表示这个结果还比较可信，但是具体有多可信就。。</p>
+<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><p>主要看看作者介绍的一些局限性吧。</p>
+<ul>
+<li>这个方法不能改造成UMI-based方法。</li>
+<li>和其他单细胞测序方法比起来测序深度需要更深一些 </li>
+<li>rRNA还是会有，大概在10-35%这个量级</li>
+</ul>
+<p>具体测多深呢，作者说在subsampling simulation中，</p>
+<ul>
+<li>> 1M reads per cell 就能找到比其他方法更多的transcripts</li>
+<li>~ 4M reads per cell 就能找到上面介绍的各种包括新non-polyA transcripts啦，RS啦各种东西</li>
+</ul>
+<p>作者说鉴于4M就是个96孔板一个run测序普通程度，所以还行吧！</p>
+<p>然后吹了一波还可以做什么什么，基本上关于RNA的都说了一遍，都能看</p>
+<p>作者提到了似乎对于同一个长转录本，细胞和细胞的剪切方式可能是不一样的，有的用RS方式，有的用normal方式(Supplementary Fig17)。嗯然后说用线性回归找锯齿确实还是有点粗糙。。。<br>(可能前面说的细胞异质性其实只是线性回归找的不准确？毕竟靠计算方法找感觉还是有一点点不靠谱，两个模型有时候差距很小。。)</p>
+<p>基本情况就酱~</p>
+<h3 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h3><h4 id="Recursive-splicing"><a href="#Recursive-splicing" class="headerlink" title="Recursive splicing   "></a>Recursive splicing <span id="RS">  </span></h4><p>根据<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5126111/" target="_blank" rel="noopener">这篇文章</a>的定义:</p>
+<blockquote>
+<p>Recent work in human and fruitfly tissues revealed that long introns are extensively processed cotranscriptionally and in a stepwise manner, before their two flanking exons are spliced together. This process, called “recursive splicing,” often involves non-canonical splicing elements positioned deep within introns, and different mechanisms for its deployment have been proposed. </p>
+</blockquote>
+<p>Recursive splicing，直译递归剪切，指的是一种在果蝇和人类中存在的针对长内含子的剪切方式。与短内含子直接剪除不同，长内含子是一段一段“递归地”被剪除的。</p>
+<h4 id="Diffusion-map"><a href="#Diffusion-map" class="headerlink" title="Diffusion map"></a>Diffusion map</h4><p><a href="https://en.wikipedia.org/wiki/Diffusion_map" target="_blank" rel="noopener">Introduction for diffusion map of Wikipedia</a></p>
+<hr>
+<p>如有问题/建议/意见，欢迎留言交流</p>
+<blockquote>
+<p>版权声明： 本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank" rel="noopener">CC BY-NC-SA 3.0 CN</a>许可协议。转载请注明出处！</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AS/" rel="tag"># AS</a>
+          
+            <a href="/tags/single-cell/" rel="tag"># single-cell</a>
+          
+            <a href="/tags/total-RNA-sequencing/" rel="tag"># total RNA sequencing</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/17/how-to-use-git01/" rel="next" title="How to Use Git-01">
+                <i class="fa fa-chevron-left"></i> How to Use Git-01
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/24/use-conda-to-setup-scanpy/" rel="prev" title="Use conda to install scanpy">
+                Use conda to install scanpy <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODY0NC81MjE1"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Jason Li" />
+          <p class="site-author-name" itemprop="name">Jason Li</p>
+           
+              <p class="site-description motion-element" itemprop="description">Notes about R & python</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/lijxug" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要亮点"><span class="nav-number">2.</span> <span class="nav-text">主要亮点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">3.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果部分"><span class="nav-number">4.</span> <span class="nav-text">结果部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#那么问题来了，什么是RT-RamDA"><span class="nav-number">4.1.</span> <span class="nav-text">那么问题来了，什么是RT-RamDA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Benchmark"><span class="nav-number">4.2.</span> <span class="nav-text">Benchmark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生物学问题-细胞分化中的应用"><span class="nav-number">4.3.</span> <span class="nav-text">生物学问题 - 细胞分化中的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生物学问题-递归剪切-Recursive-splicing"><span class="nav-number">4.4.</span> <span class="nav-text">生物学问题 - 递归剪切 Recursive splicing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生物学问题-增强子RNA-Enhancer-RNAs"><span class="nav-number">4.5.</span> <span class="nav-text">生物学问题 - 增强子RNA Enhancer RNAs</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discussion"><span class="nav-number">5.</span> <span class="nav-text">Discussion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Footnotes"><span class="nav-number">6.</span> <span class="nav-text">Footnotes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Recursive-splicing"><span class="nav-number">6.1.</span> <span class="nav-text">Recursive splicing   </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Diffusion-map"><span class="nav-number">6.2.</span> <span class="nav-text">Diffusion map</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Li</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (search_path.endsWith("json")) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
