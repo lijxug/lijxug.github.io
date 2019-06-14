@@ -1,5 +1,5 @@
 ---
-title: 重装Ubuntu-03 工作环境
+title: 重装Ubuntu-04 工作环境
 tags:
   - Linux
 categories:
@@ -13,12 +13,9 @@ MathJax.Hub.Config({
 </script>
 
 # Abstract
-重装篇03 
-开机启动
-- syncthing
-- startup
-- 美化
-
+重装篇04 
+- R/Rstudio-server
+- jupyter lab server style
 <!--more-->
 
 # 脚本开机启动
