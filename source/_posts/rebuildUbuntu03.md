@@ -1,5 +1,5 @@
 ---
-title: 重装Ubuntu-03
+title: 重装Ubuntu-03 工作环境
 tags:
   - Linux
 categories:
@@ -16,18 +16,13 @@ MathJax.Hub.Config({
 重装篇03 
 开机启动
 - sendIP
-- ss(sslocal)
+- R/Rstudio-server
+- jupyter lab
 - syncthing
-- deluge
-- teamViewer
 
 - 美化
 
 <!--more-->
-
-# ss
-
-略，详见gayhub
 
 # 脚本开机启动
 

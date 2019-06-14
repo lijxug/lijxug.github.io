@@ -117,5 +117,18 @@ sudo apt-get install fcitx-table
 安装网上下载的搜狗输入法linux版 (Ubuntu有提供.deb)
 重启电脑即可
 
+# SSH服务
+```
+sudo apt-get update
+sudo apt-get install openssh-server openssh-client
+
+# 配置
+sudo vi /etc/ssh/ssh_config
+
+PasswordAuthentication yes
+
+# 启动服务
+sudo service ssh start
+```
 
 >版权声明： 本博客所有文章除特别声明外，均采用[CC BY-NC-SA 3.0 CN](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh)许可协议。转载请注明出处！
