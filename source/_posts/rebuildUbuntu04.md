@@ -18,33 +18,11 @@ MathJax.Hub.Config({
 - jupyter lab server style
 <!--more-->
 
-# 脚本开机启动
+# R
+Tutorial[https://cran.rstudio.com/bin/linux/ubuntu/README.html#installation]
 
-构造开机脚本`startup.sh`
-并且确保开头具有
-```
-#!/bin/bash
-PATH=$PATH:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
-SHELL=/bin/bash
-
-/path/to/SendIP.sh
-/path/to/check_ss.sh
-```
-
-之后使用crontab设置开机启动
-```
-sudo crontab -e
-# 在脚本后加入
-@reboot /path/to/startup.sh
-```
-
-
-# 美化
-MacOs 主题
-[教程](https://www.jianshu.com/p/6ef16e3b0a3e)
-
-桌面幻灯片
-Variety
+# Rstudio-server
+Tutorial[https://www.rstudio.com/products/rstudio/download-server/]
 
 
 
